@@ -1,0 +1,107 @@
+\documentclass[english]{tktltiki}
+\usepackage[pdftex]{graphicx}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\begin{document}
+
+
+\onehalfspacing
+\title{Reinforcement Learning in Games: A Case Study}
+\author{Ege Can Özer}
+\date{\today}
+
+\maketitle
+\numberofpagesinformation{\numberofpages\ pages + \numberofappendixpages\ appendices}
+
+\classification{\protect{\ \\
+	A.1 [Introductory and Survey],\\
+	I.7.m [Document and text processing]}}
+
+\keywords{Reinforcement Learning}
+
+\begin{abstract}
+	Self-learning programs have been studied and applied in many different fields; but recently, it gains more popularity and familiarity due to its breakthrough success in the game context. Unlike the examples taken from the real world, having pre-defined set of rules and less complicated environment in this domain provides greater flexibility to develop reinforcement learning algorithms. In this paper we will review five different articles about advancements of the reinforcement learning algorithms in games, but also point out in what way those algorithms exhibits in their model. Based on the findings, we hope to propose improvements for future researches.
+\end{abstract}
+
+\mytableofcontents
+
+
+\section{Introduction}
+\begin{itemize}
+    \item 1. What is the problem area?
+    \begin{itemize}
+        \item RL is upwarding trend but not a new concept, and applied to many different fields
+        \item The problem that RL tries to solve. Why applied to many fields and this makes the RL alg. to apply many fields. What is RL in short.
+        \item Connect directly to game context-The first of its kind in the game context comes from chess and Samuels checkers-cite-.
+        \item Last few years breakthrough successes in the hard problems makes this field to gain popularity?!?!
+        \item The history of the reinforcement learning algorithms applied in many different fields.
+        \item Even though, it has many different algorithms in essence RL based on few elements.
+        \item A few first of its kind of RL algorithms that applied to game context (this is a link to next paragraph).
+        \item 
+    \end{itemize}
+    
+    \item 2. What is the specific problem considered, and why is it important?
+    \begin{itemize}
+        \item Topic sentence: motivation to research RL algorithms in the game context provides lots of good things.
+        \item Address the previous definition and connect to game context by pointing out their advantages e.g. simplify models compare to real-life
+        \item other advantage, allows to compare even other algorithms easily, test-bed
+        \item aids human level knowledge in these context
+        \item possibility to expect an influence on real-life examples by the improvements.
+        \item Re-phrase topic sentece: These things make worthwhile to resarch RL in games.
+    \end{itemize}
+    
+    \item 3. What are the main contributions given the context
+    \begin{itemize}
+        \item The study of the Reinforcement learning algorithms, approaches to model, and inspecting advancements in the game context can affect the real-life scenarios.
+        \item Point-out that was other-way around with image processing example.
+        \item However, there is a improvement possibility through RL-robotics field. Game context makes it easier to study on the idea.
+        \item For this reason, we will investigate couple of examples which has different modelling scheme of the environment. Briefly, we consider these as low-level, high-level, and concept-free approaches, which we will study.
+    \end{itemize}
+    
+    \item 5. The paper outline (preferably made inline with previous
+    \begin{itemize}
+        \item In this paper, we will review 5 existing systems etc.
+    \end{itemize}
+\end{itemize}
+
+
+\section{Application of Reinforcement Learning to Games}
+\subsection{Mario: Q-Learning}
+Everything is defined in this model. Low-level design of the environment, everything is known.
+\subsection{Civilization 4: High Level RL Approach}
+RL used as a high level strategy planning, they let the game's AI handle the low-level operations.
+\subsection{TD Gammon: First Success}
+First important step towards AI in games using RL.
+\subsection{Atari Games: Context Free Approach DQN}
+Raw sensory input data to train bunch of different games without knowing its internal elements explicitly. I need to read this more deeply.
+\subsection{Mastering the Game of Go}
+Read this again!
+
+\section{Future Researches}
+\begin{itemize}
+    \item Evaluation frameworks, point out many systems, human comparison
+    \item Sandbox learning, can this be used to train DQN approach and applied on other games? This way one may not to deal with the context at all? RL in games, may help other 
+    \item Need for a theoratical framework to describe the RL papers that encapsulating some context. Similar frameworks exist in the view of computational creativity world. This would provide more structural way for reseaches to present their case studies, but also to describe the candidate systems regardless of what they use. A theoretical framework, such as that presented here, may be useful in teasing out philosophical issues, but it may also be useful in giving generalised descriptions of behaviours which might be observed in creative agents. Self-critics about writing this paper, more structured way to review RL systems in terms of some theoratical framework.
+\end{itemize}
+
+\section{Conclusion}
+Recap everything
+
+\nocite{*}
+\bibliographystyle{tktl}
+\bibliography{lahteet}
+
+\lastpage
+
+\appendices
+
+\pagestyle{empty}
+
+
+
+\end{document}
+
+
