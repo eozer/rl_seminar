@@ -1,0 +1,50 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{MKS{\etalchar{+}}13}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{{\tt #1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\input babelbst.tex
+\newcommand{\Capitalize}[1]{\uppercase{#1}}
+\newcommand{\capitalize}[1]{\expandafter\Capitalize#1}
+
+\bibitem[AmS10]{amato2010high}
+Amato, C. \bbland{} Shani, G., High-level reinforcement learning in strategy
+  games.
+\newblock  {\em Proceedings of the 9th International Conference on Autonomous
+  Agents and Multiagent Systems: volume 1-Volume 1}. International Foundation
+  for Autonomous Agents and Multiagent Systems, 2010, \bblpages{} 75--82.
+
+\bibitem[BNV13]{bellemare13arcade}
+{Bellemare}, M.~G., {Naddaf}, Y., {Veness}, J. \bbland{} {Bowling}, M., The
+  arcade learning environment: An evaluation platform for general agents.
+\newblock {\em Journal of Artificial Intelligence Research}, 47, \bblpages{}
+  253--279.
+
+\bibitem[LYY12]{liao2012cs229}
+Liao, Y., Yi, K. \bbland{} Yang, Z., Cs229 final report reinforcement learning
+  to play mario.
+\newblock \capitalize\bbltechreport{}, Technical report, Stanford University,
+  2012.
+
+\bibitem[MKS13]{mnih2013playing}
+Mnih, V., Kavukcuoglu, K., Silver, D., Graves, A., Antonoglou, I., Wierstra, D.
+  \bbland{} Riedmiller, M., Playing atari with deep reinforcement learning.
+\newblock {\em arXiv preprint arXiv:1312.5602}.
+
+\bibitem[SHM16]{silver2016mastering}
+Silver, D., Huang, A., Maddison, C.~J., Guez, A., Sifre, L., Van Den~Driessche,
+  G., Schrittwieser, J., Antonoglou, I., Panneershelvam, V., Lanctot, M.
+  \bbletal{}., Mastering the game of go with deep neural networks and tree
+  search.
+\newblock {\em Nature}, 529,7587(2016), \bblpages{} 484--489.
+
+\bibitem[SSS15]{sukhbaatar2015mazebase}
+Sukhbaatar, S., Szlam, A., Synnaeve, G., Chintala, S. \bbland{} Fergus, R.,
+  Mazebase: A sandbox for learning from games.
+\newblock {\em arXiv preprint arXiv:1511.07401}.
+
+\bibitem[Tes95]{tesauro1995temporal}
+Tesauro, G., Temporal difference learning and td-gammon.
+\newblock {\em Communications of the ACM}, 38,3(1995), \bblpages{} 58--68.
+
+\end{thebibliography}
