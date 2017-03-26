@@ -23,51 +23,98 @@
 \keywords{Reinforcement Learning}
 
 \begin{abstract}
-    Self-learning programs have been studied and applied in many different fields; but recently, it gains more popularity and familiarity due to its breakthrough success in the game domain. Unlike the examples are taken from the real world, having the pre-defined set of rules and the less complicated environment in this domain provides greater flexibility to develop reinforcement learning algorithms. In this paper, we will study the applications of reinforcement learning algorithms in the game context by closely focusing on five different articles. Based on the findings, we hope to propose possible improvements for future studies.
+    Self-learning programs have been studied and applied in many different fields; but recently, it gains more popularity and familiarity due to its breakthrough success in the game domain. Unlike the examples are taken from the real world, having the predefined set of rules and the less complicated environment in this domain provides greater flexibility to develop reinforcement learning algorithms. In this paper, we will study the applications of reinforcement learning algorithms in the game context by closely focusing on five different articles. Based on the findings, we hope to propose possible improvements for future studies.
 \end{abstract}
 
 \mytableofcontents
 
 \section{Introduction}
-During the last decade, reinforcement learning paradigm, despite being actually not a new concept, has gained decent amount of popularity. Starting from middle 80's and ever since then, it has been applied in many fields to address complex problems such as in robotics, control systems, finance, and agent-based systems due to its generic formulation. In its essence, reinforcement learning concept looks for optimal input actions that maximizes the output states by making use of the feedbacks from environment \cite{tesauro1995temporal}. In spite of the fact that RL being a mature and widely-used concept, the primary reason to get such attention recently is due to breakthrough success in the game context \cite{mnih2013playing, silver2016mastering}.
+During the last decade, Reinforcement Learning (RL) paradigm, despite being actually not a new concept, has gained decent amount of popularity. Starting from middle 80's and ever since then, it has been applied in many fields to address complex problems such as in robotics, control systems, finance, and agent-based systems due to its generic formulation. In its essence, RL concept looks for optimal input actions that maximizes the output states by making use of the feedbacks from environment \cite{tesauro1995temporal}. In spite of the fact that RL being a mature and widely-used concept, the primary reason to get such attention recently is due to breakthrough success in the game context \cite{mnih2013playing, silver2016mastering}.
 
-Studying reinforcement learning algorithms in the game context contributes several definitive advantages \cite{tesauro1995temporal}. In general, modeling of the problem, implementation, and analysis of the results in real life examples are harder than the artificial ones such as games. Moreover, having simplified and controlled environment, as well as specifically defined rule sets not only allow an opportunity to explore the new variety of RL algorithms, but also enable to have concrete evaluation measurements. Further, research results are reproducible, easy to simulate and provide test-bed for future studies. Therefore, for the given reasons, studying reinforcement learning in games can help the field to progress further and more effectively.
+Studying RL algorithms in the game context contributes several definitive advantages \cite{tesauro1995temporal}. In general, modeling of the problem, implementation, and analysis of the results in real life examples are harder than the artificial ones such as games. Moreover, having simplified and controlled environment, as well as specifically defined rule sets not only allow an opportunity to explore the new variety of RL algorithms, but also enable to have concrete evaluation measurements. Further, research results are reproducible, easy to simulate and provide test-bed for future studies. Therefore, for the given reasons, studying RL in games can help the field to progress further and more effectively.
 
-Advancement in a scientific field affect one to another and grants to improve even more towards advancement; the notion enables opportunity to observe the advancements, yet to come, obtained by the RL in games. The usual case is where the previous developments leads to a new one, such an example appears in the article by Gerald Tesauro \cite{tesauro1995temporal} that combines neural network and temporal difference concepts into new one. Another case is that advancements in the related fields drive a new one. For example, Mnih et al. \cite{mnih2013playing} proposes a deep learning model that learns control policies directly from sensory(image, video) input, which made it possible by computer vision and speech recognition research fields. As a matter of fact, this mini survey, in some sense, will explore the final case that how RL in game context can affect the other fields.
+Advancement in a scientific field affect one to another and grants to improve even more towards advancement; the notion enables opportunity to observe the advancements, yet to come, obtained by the RL in games. The usual case is where the previous developments leads to a new one, such an example appears in the article by Gerald Tesauro \cite{tesauro1995temporal} that combines neural network and temporal difference concepts into new one. Another case is that advancements in the related fields drive a new one. For example, Mnih et al. \cite{mnih2013playing} proposes a deep learning model that learns control policies directly from sensory(image, video) input, which made it possible by computer vision and speech recognition research fields. As a matter of fact, this mini survey, in some sense, will explore the final case that how RL in game context can affect the other fields. That is, playing patterns of such artificial intelligence can provide knowledge on how to progress towards advancement.
 
-*Refactor last paragraph later*
+In this paper, we will review five different existing reinforcement learning systems in the game context. The rest of this paper is organized as follows. In section 2, we discuss common challenges and approaches to the problems in RL in games such as dealing with abstraction of the environment or evaluation of the results. In section 3, we review existing systems in detail each with its unique characteristics. Then following section proposes possible improvements that can be taken to improve the research field. Last section summarizes and concludes the paper.
 
-In this paper, we review five different reinforcement learning systems in game context. The rest of the paper is organized as follows. In section 2, we examine each articles in detail, how do they tackle the problem, and how RL is used and what are their flaws. In section 3, we propose possible improvements that can be taken to help to improve the field. Last section, summarizes and concludes the paper.
+\section{Challenges and  approaches}
+In the last decade, many research has gone into investigating reinforcement learning algorithms in the game context. Concurrently, many challenges and approaches have arisen around this topic repeatedly. In this section, we present some of those common challenges and some approaches that exist mostly in the reviewed systems \cite{tesauro1995temporal, amato2010high, liao2012cs229, mnih2013playing, silver2016mastering}.
 
-\section{Application of Reinforcement Learning to Games}
-** Introduce this section, what is going to happen, how we are going to explore the articles, in what order, in which structure, lastly we will compare**
-\subsection{Basic outline to follow}
-\begin{itemize}
-    \item What is the problem, introduce environment
-    \item Proposed solution to the problem
-    \item Results
-\end{itemize}
-\subsection{Mario: Q-Learning}
-Everything is defined in this model. Low-level design of the environment, everything is known.
-\subsection{Civilization 4: High Level RL Approach}
-RL used as a high level strategy planning, they let the game's AI handle the low-level operations.
-\subsection{TD Gammon: First Success}
-First important step towards AI in games using RL.
-\subsection{Atari Games: Context Free Approach DQN}
-Raw sensory input data to train bunch of different games without knowing its internal elements explicitly. I need to read this more deeply.
-\subsection{Mastering the Game of Go}
-Read this again!
+Because there exist many different and specific problems as well as methods to tackle them, the challenges and approaches listed in this section are all related but not necessarily belong to every system in the whole research field. Generally, given matters are all common, but still some of them may not appear within another context.
 
-\section{Future Researches}
+\subsection{Abstracting the environment}
+In order to study the games properly using reinforcement learning, certainly the very first step is abstracting the game environment in terms of Markov decision processes (MDPs). Since the modeling choices, as well as the definitions may differ based on the systems (for example, transition probability parameter does not exist in Q-learning). Therefore, we will follow an example model by Liao et al. \cite{liao2012cs229} to only illustrate the concept. Besides, we are not going to give in-depth algorithmic analysis for any of the inspected systems in this paper.
+
+\begin{align}
+Q(s_t, a_t) \leftarrow 
+(1 - a_{s,a}) Q(s_t, a_t) + 
+a_{s,a}(r + \gamma max(Q(s_{t+1}, a_{t+1}))) \label{eq:mario}
+\end{align}
+
+We can inspect the required elements for a model more easily directly from the equation \ref{eq:mario}. In total \textit{five} factors need to be defined in this model. Those are $ s_t $ state space that the agent might be in, $ a_t $ set of actions that agent capable of, $ r $ reward function that the agent receives after transitioning from $s_t$ to $s_{t+1}$ via $ a_t $. Then, $\gamma \in [0,1]$ discount factor serves as tuning parameter for present and future rewards, and finally $ a_{s,a} \in [0,1]$ is learning rate that affects agent's converging rate, further details are stated in \cite{liao2012cs229}.
+
+By using the provided AI application interface, Liao et al. \cite{liao2012cs229} encodes the game environment--Mario in the following way. From the figure \ref{fig:mario} it can be inferred that nearly any condition of the character and its surroundings can be extracted. According to the article, $s_t$ designed in a way that it requires 39 bits to encode, such example attributes are Mario's current mode (small, big, fire), movement states, enemy distance within 3 different ranges and so on. There are 12 different $a_t$ that Mario agent can perform, from the combinations of (LEFT, RIGHT, STAY) x (JUMPY, NOTJUMP) x (SPEED{FIRE}, NOSPEED). In the article $r$ is defined as combination of weighted state attribute values and the distance that agent performs from the last frame. $a_{s,a}$ and $\gamma$ parameters chosen based on several try-outs that would lead to non-degenerated performance in the evaluation.
+
+Over-all, we revealed an example approach to encode a game environment to be able make use of a reinforcement learning algorithm. Moreover, there are many ways to handle the abstraction of game environment and making use of the RL algorithms, which we will cover these later on. However, briefly one can categorize them in 3 possible ways, low-level, high-level and context-free abstraction/modeling. We refer the presented approach as low-level abstraction where the designer have access to nearly all attributes available. If one can access only the limited resources and be able to utilize inner mechanics of the system we refer this as high-level modeling. Context-free modeling encodes the environment without any context related knowledge. In the literature such modeling achieved by using convolutional neural networks. We will point-out these categories as we review systems in the further sections.
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=0.65\textwidth]{img/mario.png}
+		\caption{ Mario's scene \cite{liao2012cs229} }
+		\label{fig:mario}
+	\end{center}
+\end{figure}
+
+
+
+\subsection{Implementation limitations}
+* TODO *
+
+Studying real-time/complex video games is hard due to lack SDK. Mainly, algorithms implemented on these game because they were the only available one. The need for the general AI trainer play ground Sukhbaatar et al. \cite{sukhbaatar2015mazebase}. Find the example that makes use of this (cannot find the paper atm. Starcraft AI player trained outside of the context i.e. by this sandbox).
+
+
+\subsection{Evaluating the results/Experiments}
+* TODO *
+
+Need for common evaluation frameworks. Comparison against baseline is must. Benchmarking, too. Human level play indication is nice to see. Need to have more test-bed frameworks. Give examples already exist, e.g. Mario. Some FPS games also have this kind of framework, but should I cite it, just as good to mention?
+
+
+\subsection{Context specific outcomes}
+* TODO *
+Even though a new algorithmic concept provides certain solution, for a certain context it may not necessarily give comprehensive solution for every other systems and possibly may lead to wrong direction.
+
+Found some articles discusses the solution of TD-Gammon did not work out well for other games. Results of
+some games in \cite{mnih2013playing} also proves that. Which brings the question AlphaGo is surely a success, but does that mean it is success for not something big? Only for that particular solution? We will see that.
+
+"Playing atari paper" points out the TD-Gammon problem due to its stochastic dice rolls, using the same argument, it can also be inferred that AlphaGo's technique is also target specific, i.e. not-general approach.
+
+\subsection{Other problems}
+* TODO *
+
+Problems that exist in the RL, NN, and CNN. Exploration vs Exploitation. Many training samples are needed in NN. Hard to understand intermediate results in CNN. Data distribution assumption in NN.
+
+\section{Review of existing systems}
+\colorbox{gray}{The order}\\
+Reinforcement Learning to Play Mario
+
+High-level Reinforcement Learning in Strategy Games
+
+Temporal Difference Learning: TD-Gammon
+
+Playing Atari with Deep Reinforcement Learning
+
+Mastering the game of Go with deep neural networks and tree search \colorbox{red}{Maybe I can skip this paper}
+\section{Future research}
 \begin{itemize}
     \item Evaluation frameworks, point out many systems, human comparison
     \item Sandbox learning, can this be used to train DQN approach and applied on other games? This way one may not to deal with the context at all? RL in games, may help other 
-    \item Need for a theoratical framework to describe the RL papers that encapsulating some context. Similar frameworks exist in the view of computational creativity world. This would provide more structural way for reseaches to present their case studies, but also to describe the candidate systems regardless of what they use. A theoretical framework, such as that presented here, may be useful in teasing out philosophical issues, but it may also be useful in giving generalised descriptions of behaviours which might be observed in creative agents. Self-critics about writing this paper, more structured way to review RL systems in terms of some theoratical framework.
+    \item Need for a theoretical framework to describe the RL papers that encapsulating some context. Similar frameworks exist in the view of computational creativity world. This would provide more structural way for researches to present their case studies, but also to describe the candidate systems regardless of what they use. A theoretical framework, such as that presented here, may be useful in teasing out philosophical issues, but it may also be useful in giving generalized descriptions of behaviors which might be observed in creative agents. Self-critics about writing this paper, more structured way to review RL systems in terms of some theoretical framework.
 \end{itemize}
 
 \section{Conclusion}
 Recap everything
 
+\newpage
 \nocite{*}
 \bibliographystyle{tktl}
 \bibliography{lahteet}
