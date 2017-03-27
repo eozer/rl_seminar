@@ -42,6 +42,11 @@ In the last decade, many research has gone into investigating reinforcement lear
 
 Because there exist many different and specific problems as well as methods to tackle them, the challenges and approaches listed in this section are all related but not necessarily belong to every system in the whole research field. Generally, given matters are all common, but still some of them may not appear within another context.
 
+\subsection{Implementation point of view}
+The fundamental necessity to find a proper playground to study reinforcement learning algorithms in the game context certainly unignorable. Nonetheless finding the platform, implementing it through the given medium, and evaluating the results may differ. Moreover, it limits the researches due to the lack of freedom in the provided software. So it may ending up building the whole playground from scratch, which surely is a wrong way to start to study the algorithm. Therefore, finding appropriate software development kits (SDKs) are crucial even before considering the study the RL algorithms in this domain.
+
+Fortunately, there exists plenty of variety in the approach to implementation, ranging from turn-based board games to fast-paced action games. It is reasonable to not expect to have every games mainly due to the trademarking concerns; but still some open source the contents or provide refined framework for everyone. For example, we observe \cite{amato2010high, liao2012cs229, mnih2013playing} take advantage of several SDKs/frameworks that they use to apply the algorithm to train the agent and even to evaluate the results. In addition, we recently recognize different and more self-aware artificial intelligence training way per se. However, we will discuss the matter in the section 4. In all, having a proper medium to study these algorithms is not negligible and certainly important aspect in this context.
+
 \subsection{Abstracting the environment}
 In order to study the games properly using reinforcement learning, certainly the very first step is abstracting the game environment in terms of Markov decision processes (MDPs). Since the modeling choices, as well as the definitions may differ based on the systems (for example, transition probability parameter does not exist in Q-learning). Therefore, we will follow an example model by Liao et al. \cite{liao2012cs229} to only illustrate the concept. Besides, we are not going to give in-depth algorithmic analysis for any of the inspected systems in this paper.
 
@@ -53,9 +58,9 @@ a_{s,a}(r + \gamma max(Q(s_{t+1}, a_{t+1}))) \label{eq:mario}
 
 We can inspect the required elements for a model more easily directly from the equation \ref{eq:mario}. In total \textit{five} factors need to be defined in this model. Those are $ s_t $ state space that the agent might be in, $ a_t $ set of actions that agent capable of, $ r $ reward function that the agent receives after transitioning from $s_t$ to $s_{t+1}$ via $ a_t $. Then, $\gamma \in [0,1]$ discount factor serves as tuning parameter for present and future rewards, and finally $ a_{s,a} \in [0,1]$ is learning rate that affects agent's converging rate, further details are stated in \cite{liao2012cs229}.
 
-By using the provided AI application interface, Liao et al. \cite{liao2012cs229} encodes the game environment--Mario in the following way. From the figure \ref{fig:mario} it can be inferred that nearly any condition of the character and its surroundings can be extracted. According to the article, $s_t$ designed in a way that it requires 39 bits to encode, such example attributes are Mario's current mode (small, big, fire), movement states, enemy distance within 3 different ranges and so on. There are 12 different $a_t$ that Mario agent can perform, from the combinations of (LEFT, RIGHT, STAY) x (JUMPY, NOTJUMP) x (SPEED{FIRE}, NOSPEED). In the article $r$ is defined as combination of weighted state attribute values and the distance that agent performs from the last frame. $a_{s,a}$ and $\gamma$ parameters chosen based on several try-outs that would lead to non-degenerated performance in the evaluation.
+By using the provided AI application interface, Liao et al. \cite{liao2012cs229} encodes the game environment--Mario in the following way. From the figure \ref{fig:mario} it can be inferred that nearly any condition of the character and its surroundings can be extracted. According to the article, $s_t$ designed in a way that it requires 39 bits to encode in a state vector, such example attributes are Mario's current mode (small, big, fire), movement states, enemy distance within 3 different ranges and so on. There are 12 different $a_t$ that Mario agent can perform, from the combinations of (LEFT, RIGHT, STAY) x (JUMPY, NOT\_JUMP) x (SPEED/FIRE, NO\_SPEED). In the article $r$ is defined as combination of weighted state attribute values and the distance that agent performs from the last frame. $a_{s,a}$ and $\gamma$ parameters chosen based on several try-outs that would lead to non-degenerated performance in the evaluation.
 
-Over-all, we revealed an example approach to encode a game environment to be able make use of a reinforcement learning algorithm. Moreover, there are many ways to handle the abstraction of game environment and making use of the RL algorithms, which we will cover these later on. However, briefly one can categorize them in 3 possible ways, low-level, high-level and context-free abstraction/modeling. We refer the presented approach as low-level abstraction where the designer have access to nearly all attributes available. If one can access only the limited resources and be able to utilize inner mechanics of the system we refer this as high-level modeling. Context-free modeling encodes the environment without any context related knowledge. In the literature such modeling achieved by using convolutional neural networks. We will point-out these categories as we review systems in the further sections.
+Over-all, we revealed an example approach to encode a game environment to be able make use of a reinforcement learning algorithm. Moreover, there are many ways to handle the abstraction of game environment and making use of the RL algorithms, which we will cover these later on. However, briefly one can categorize them in 3 possible ways, low-level, high-level and context-free abstraction/modeling. We refer the presented approach as low-level abstraction where the designer have access to nearly all attributes available. If one can access only the limited resources and be able to utilize inner mechanics of the system we refer this as high-level modeling. Context-free modeling encodes the environment without any context related knowledge. In the literature such modeling can achieved by using convolutional neural networks. We will point-out these categories as we review systems in the further sections.
 
 \begin{figure}[h]
 	\begin{center}
@@ -67,14 +72,8 @@ Over-all, we revealed an example approach to encode a game environment to be abl
 
 
 
-\subsection{Implementation limitations}
-* TODO *
-
-Studying real-time/complex video games is hard due to lack SDK. Mainly, algorithms implemented on these game because they were the only available one. The need for the general AI trainer play ground Sukhbaatar et al. \cite{sukhbaatar2015mazebase}. Find the example that makes use of this (cannot find the paper atm. Starcraft AI player trained outside of the context i.e. by this sandbox).
-
-
 \subsection{Evaluating the results/Experiments}
-* TODO *
+Perha
 
 Need for common evaluation frameworks. Comparison against baseline is must. Benchmarking, too. Human level play indication is nice to see. Need to have more test-bed frameworks. Give examples already exist, e.g. Mario. Some FPS games also have this kind of framework, but should I cite it, just as good to mention?
 
@@ -107,7 +106,9 @@ Mastering the game of Go with deep neural networks and tree search \colorbox{red
 \section{Future research}
 \begin{itemize}
     \item Evaluation frameworks, point out many systems, human comparison
-    \item Sandbox learning, can this be used to train DQN approach and applied on other games? This way one may not to deal with the context at all? RL in games, may help other 
+    \item Sandbox learning, can this be used to train DQN approach and applied on other games? This way one may not to deal with the context at all? RL in games, may help other. Studying real-time/complex video games is hard due to lack SDK. Mainly, algorithms implemented on these game because they were the only available one. The need for the general AI trainer play ground Sukhbaatar et al. \cite{sukhbaatar2015mazebase}. Find the example that makes use of this (cannot find the paper atm. Starcraft AI player trained outside of the context i.e. by this sandbox).
+
+    
     \item Need for a theoretical framework to describe the RL papers that encapsulating some context. Similar frameworks exist in the view of computational creativity world. This would provide more structural way for researches to present their case studies, but also to describe the candidate systems regardless of what they use. A theoretical framework, such as that presented here, may be useful in teasing out philosophical issues, but it may also be useful in giving generalized descriptions of behaviors which might be observed in creative agents. Self-critics about writing this paper, more structured way to review RL systems in terms of some theoretical framework.
 \end{itemize}
 
