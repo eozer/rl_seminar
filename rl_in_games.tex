@@ -1,3 +1,4 @@
+
 \documentclass[english]{tktltiki}
 \usepackage[pdftex]{graphicx}
 \usepackage{graphicx}
@@ -84,25 +85,12 @@ Second method is evaluating the system against the master level human players. T
 Last evaluation method is done by analyzing individual decisions by system, which is actually closely related to the second method. Moreover, it is valid to say that it also inherits nearly the same problems. Gerald Tesauro \cite{tesauro1995temporal} states that the method used to analyze the individual decisions via computer roll-outs in a backgammon game. However, one can induce this approach for any systems. The key thing is to set up candidate positions, just as in the supervised learning, and letting the computer to play out the position several times. The results can be deductible from the statistics of good and bad plays. However, it is more suitable for stochastic environments or having large state spaces, generally board games. 
 
 \subsection{Further challenges}
-Until now we bring up usual common problems that every reinforcement learning systems strives. Still, underlying all possible challenges, especially after the combinations of other fields, not only out of scope of this paper but also is intractable and demanding task. For this reason, we will additionally cover only a few prominent ones from what we have studied. Briefly these are: exploration versus exploitation trade-off, influence of stochastic environments on automatic feature extraction, and various RL challenges from deep learning point of view.
+Until now we bring up usual common problems that every reinforcement learning systems strives. Still, underlying all possible challenges, especially after the combinations of other fields, not only out of scope of this paper but also is intractable and demanding task. For this reason, we will additionally cover only a few prominent ones from what we have studied. Briefly these are: exploration versus exploitation trade-off and various RL challenges from deep learning (DL) point of view.
 
 To begin with, exploitation versus exploration dilemma is truly one of the classic challenges in the reinforcement learning. Problem comes along with the agent's main learning objective. That is, the agent must be able to obtain the maximum possible reward from the actions that it has performed before. Still, it must discover such new actions that would also lead to maximize the reward in future \cite{sutton1998introduction}. The dilemma is basically deciding on what is the perfect moment to explore and exploit, yet it has no single solution. Sutton and Barto \cite{sutton1998introduction} demonstrate ways to balance between exploration and exploitation, including $\varepsilon$\textit{-greedy} and \textit{softmax} which all are perform near-optimally reward. Even though there exists many possible techniques in the literature, upon closer examination $\varepsilon$\textit{-greedy} appears to be common approach, also in \cite{amato2010high, liao2012cs229}.
 
 
--- Paragraph 2 --
-
-Semi-supervised learning in some sense, self-training, and stochastic environment of the backgammon game.
-
-Automatic feature extraction or an agent cannot sense the entire state of the environment that might not converge/emerge on something leading to poor agent performance.
-
--- Paragraph 3 --
-
-\begin{itemize}
-    \item Large amounts of hand labeled data
-    \item Scalar reward, frequently sparse, noisy and delayed
-    \item Assumption in deep learning applications concerning data samples are independent, in RL they are highly correlated.
-    \item Deep learning assumes fixed underlying distribution, in RL data distribution changes as the algorithm learns
-\end{itemize}
+On the other hand, RL suffers many problems from DL point of view which some are identified by Mnih et al. \cite{mnih2013playing}. First, data needs to be independent and identically distributed based on the assumptions of DL algorithms. In contrast to this, RL usually consists of sequences of highly correlated actions. Moreover, vast majority of DL algorithms requires extensive amount of labeled data to achieve "automatic" feature extraction, whereas RL algorithms' experience-based learning demand reward that is usually noisy and delayed. Also, agents in RL algorithms likely to change their behaviors as they explore, this indefinite data distribution violates the fixed distribution assumption of the DL algorithms. Fortunately, there exists different approaches to overcome these issues \cite{mnih2013playing}.
 
 \section{Review of existing systems}
 \colorbox{gray}{The order}\\
