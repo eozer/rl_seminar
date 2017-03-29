@@ -31,6 +31,11 @@ Mnih, V., Kavukcuoglu, K., Silver, D., Graves, A., Antonoglou, I., Wierstra, D.
   \bbland{} Riedmiller, M., Playing atari with deep reinforcement learning.
 \newblock {\em arXiv preprint arXiv:1312.5602}.
 
+\bibitem[SuB98]{sutton1998introduction}
+Sutton, R.~S. \bbland{} Barto, A.~G., {\em Introduction to reinforcement
+  learning}, \bblvolume{} 135.
+\newblock MIT Press Cambridge, 1998.
+
 \bibitem[SHM16]{silver2016mastering}
 Silver, D., Huang, A., Maddison, C.~J., Guez, A., Sifre, L., Van Den~Driessche,
   G., Schrittwieser, J., Antonoglou, I., Panneershelvam, V., Lanctot, M.
