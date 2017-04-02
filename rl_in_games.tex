@@ -93,19 +93,61 @@ To begin with, exploitation versus exploration dilemma is truly one of the class
 On the other hand, RL suffers many problems from DL point of view which some are identified by Mnih et al. \cite{mnih2013playing}. First, data needs to be independent and identically distributed based on the assumptions of DL algorithms. In contrast to this, RL usually consists of sequences of highly correlated actions. Moreover, vast majority of DL algorithms requires extensive amount of labeled data to achieve "automatic" feature extraction, whereas RL algorithms' experience-based learning demand reward that is usually noisy and delayed. Also, agents in RL algorithms likely to change their behaviors as they explore, this indefinite data distribution violates the fixed distribution assumption of the DL algorithms. Fortunately, there exists different approaches to overcome these issues \cite{mnih2013playing}.
 
 \section{Review of existing systems}
-\colorbox{gray}{The order}\\
 
-Reinforcement Learning to Play Mario
+Until now we have seen that there are several challenges and approaches for the reinforcement learning algorithms in the game context. In order to give more insight about the challenges and approaches, we have examined four unique systems in this section. We hope to demonstrate their adaptation to the challenges, how do they handle and make use of the reinforcement learning in this domain. At the end, table \ref{table:comparison} summarizes the properties of articles.
 
-High-level Reinforcement Learning in Strategy Games
+\textbf{\textit{Reinforcement Learning to Play Mario \cite{liao2012cs229}}}
 
-Temporal Difference Learning: TD-Gammon
+First article authored by Liao et al. \cite{liao2012cs229} focus on the design of single agent to play classic platformer game called Super Mario Bros using $\varepsilon$\textit{-greedy} Q-learning. The aim of the agent is to get the highest score and also to overcome various obstacles and rewards such as beating enemies, avoiding gaps, or collecting items until it reaches to finish line.
 
-Playing Atari with Deep Reinforcement Learning
+Mario AI framework interface aids to abstract the game environment at low-level, meaning many attributes tailored to encode into one state. Main motivation to use the $\varepsilon$\textit{-greedy} Q-learning algorithm, instead of "normal" RL, is because the state transition probabilities do not need to be known by the algorithm beforehand. Moreover, the method ensures larger state space and faster computation time. $\varepsilon$\textit{-greedy} action selection extension provides balanced way to explore more states, as well as decaying learning rate ensures faster converge policy rate than fixed learning rate. 
+
+Using the same framework, training and evaluation of the agent are done under different learning parameters. The optimum one is selected based on the four performance metrics. After 5000 training iterations the agent is able to reach approximately 90\% of winning probability ($\approx$ 9000 average score) of the game. On the other, evaluation of the system is only compared against baseline. Even though the tool by Karakovskiy and Togelius \cite{karakovskiy2012mario} provide several benchmarking tracks, none of the performance metrics present an objective comparison to existing systems. To be able to present definitive results, a possible benchmark or a human-level comparison could be applied. 
+
+\textbf{\textit{High-level Reinforcement Learning in Strategy Games \cite{amato2010high}}}
+
+Second article, Amato and Shani \cite{amato2010high} study to improve the built-in AI of a turn based strategy game called Civilization IV using high-level RL learners. The single/multiple can accomplish this by switching between high-level strategies of "leader traits", and leaving the low-level actions (technology investment, unit creation etc.) to the built-in AI. To begin with the abstraction of the game environment, states are defined in terms of the resource values, namely population difference, military power, land difference, and remaining land. Then, action space is based on the four leaders that have all possible variety of leader traits, such as financial, aggressive and so on. Lastly, reward model is based on the built-in scoring heuristic of the game, by which score difference of players used as the reward. 
+
+Article compares three RL algorithms, particularly Q-learning, Dyna-Q, and Dyna-Q with conditionally independence assumptions between states. Evaluation of the algorithms done by comparing with the build-in AI under distinct leader match-ups. After different training episodes, overall Q-learning performs worst, the former Dyna-Q best, the latter one second due to obvious state dependency between transitions, but still performs better than Q-learning and faster than the usual Dyna-Q. Nevertheless, they all perform better than the built-in AI, which means RL even can contribute to environments such that it is highly complex and the low-level behavior cannot be adjusted. 
+
+One side note, considering each leader has different initial advantages, match-ups could also be organized in a way that the designed agent has the less favorable one, a mirror match-up with increasing difficulties of built-in AI (Prince to Immortal level), or to test the multi-agent capability a team match-up could be planned. With the current evaluation scheme (limited leaders and match-ups) only finite number of approaches to win a game can be observed.
+
+\textbf{\textit{Temporal Difference Learning: TD-Gammon \cite{tesauro1995temporal}}}
+
+So far we discussed two systems that have converged into decent results either by exploiting the heuristics and/or with the aid of built-in AI. Gerald Tesauro \cite{tesauro1995temporal} presents a temporal difference (TD) neural network learner that trains itself and automatically discovers the features where agent able to reach world-class human grandmaster level in the backgammon game.
+
+Initially, the total number of checkers, from only one side, are vectorized according to each position on the board. This representation is then given as input pattern to NN, which also has output patterns consisting of 4 possible outcomes for example a white win by gammon. At each time step, edge weights of NN is calculated by using TD($\lambda$) algorithm. By the end of game, again  the "outcomes" given as the final reward for weight calculation. 
+
+In the training phase, agent makes the move for both sides and scores possible legal moves, without any heuristics, at each step in NN. Then from NN maximum likely outcome is selected to make the next move. This learning methodology with no heuristics managed to reach at intermediate-level of play. Yet, after adding hand-crafted features and training for about 1.5 millions of self-played game, TD-Gammon achieved master level of play. But surprisingly, upon further analysis by Pollack and Blair \cite{pollack1997did} it is concluded that the main reason to achieve this level of play was not related with the TD and NN approach, but the self-playing scheme and the stochastic environment of the backgammon game. This finding led us to question the other systems that may have context specific misleading outcomes, which we will discuss later on.
+
+\textbf{\textit{Playing Atari with Deep Reinforcement Learning \cite{mnih2013playing}}}
 
 
-\subsection{Context specific outcomes}
-\colorbox{red}{HIGHLY INCOMPLETE AND MEANINGLESS DRAFT}
+
+
+
+\begin{table}[h]
+	\begin{center}
+		\hspace*{-2.25cm}
+		\includegraphics[width=1.25\textwidth]{img/comparison.png}
+		\caption{DRAFT! Comparisons of the systems }
+		\label{table:comparison}
+	\end{center}
+\end{table}
+
+
+\section{Future research}
+
+\colorbox{red}{VERY FIRST DRAFT}
+
+\begin{itemize}
+    \item Evaluation frameworks
+    \item Sandbox learning, can this be used to train DQN approach and applied on other games? This way one may not to deal with the context at all? RL in games, may help other. Studying real-time/complex video games is hard due to lack SDK. Mainly, algorithms implemented on these game because they were the only available one. The need for the general AI trainer play ground Sukhbaatar et al. \cite{sukhbaatar2015mazebase}. Find the example that makes use of this (cannot find the paper atm. Starcraft AI player trained outside of the context i.e. by this sandbox).
+    \item Talk about resolving the context specific results.
+\end{itemize}
+
+\subsection{Context specific outcomes(include this in future)}
+\colorbox{red}{HIGHLY INCOMPLETE DRAFT}
 
 Mastering the game of Go with deep neural networks and tree search \colorbox{red}{Find papers}
 
@@ -117,18 +159,6 @@ some games in \cite{mnih2013playing} also proves that. Which brings the question
 "Playing atari paper" points out the TD-Gammon problem due to its stochastic dice rolls, using the same argument, it can also be inferred that AlphaGo's technique is also target specific, i.e. not-general approach.
 
 We believe and hope that context-free and  model-free approaches that are developed in the RL area would help the scientific area as a whole, to improve more and more. Not only to just develop some applications but improve the AI into more advance level that could come-up and tackle down anything that it is opposed to, just like as General Problem Solver (check out the Soar (cognitive architecture)). Perhaps this notion will help to improve in return from others as we argue at first.
-
-\section{Future research}
-
-\colorbox{red}{VERY FIRST DRAFT}
-
-\begin{itemize}
-    \item Evaluation frameworks
-    \item Sandbox learning, can this be used to train DQN approach and applied on other games? This way one may not to deal with the context at all? RL in games, may help other. Studying real-time/complex video games is hard due to lack SDK. Mainly, algorithms implemented on these game because they were the only available one. The need for the general AI trainer play ground Sukhbaatar et al. \cite{sukhbaatar2015mazebase}. Find the example that makes use of this (cannot find the paper atm. Starcraft AI player trained outside of the context i.e. by this sandbox).
-
-    
-    \item Hard experience about writing and investigating RL papers, categorization. Theoretical framework could be useful to provide a structured way to describe RL articles as surveys. Similar frameworks exist in the view of computational creativity world. This would provide more structural way for researches to present their case studies, but also to describe the candidate systems regardless of what they use. A theoretical framework, such as that presented here may be useful for some issues, but it may also be useful in giving generalized descriptions of behaviors just as in computationally creative agents. 
-\end{itemize}
 
 \section{Conclusion}
 Recap everything

@@ -20,6 +20,12 @@ Amato, C. \bbland{} Shani, G., High-level reinforcement learning in strategy
 \newblock {\em Journal of Artificial Intelligence Research}, 47, \bblpages{}
   253--279.
 
+\bibitem[KaT12]{karakovskiy2012mario}
+Karakovskiy, S. \bbland{} Togelius, J., The mario ai benchmark and
+  competitions.
+\newblock {\em IEEE Transactions on Computational Intelligence and AI in
+  Games}, 4,1(2012), \bblpages{} 55--67.
+
 \bibitem[LYY12]{liao2012cs229}
 Liao, Y., Yi, K. \bbland{} Yang, Z., Cs229 final report reinforcement learning
   to play mario.
@@ -30,6 +36,11 @@ Liao, Y., Yi, K. \bbland{} Yang, Z., Cs229 final report reinforcement learning
 Mnih, V., Kavukcuoglu, K., Silver, D., Graves, A., Antonoglou, I., Wierstra, D.
   \bbland{} Riedmiller, M., Playing atari with deep reinforcement learning.
 \newblock {\em arXiv preprint arXiv:1312.5602}.
+
+\bibitem[PolB97]{pollack1997did}
+Pollack, J.~B. \bbland{} Blair, A.~D., Why did td-gammon work?
+\newblock  {\em Advances in Neural Information Processing Systems}. MORGAN
+  KAUFMANN PUBLISHERS, 1997, \bblpages{} 10--16.
 
 \bibitem[SuB98]{sutton1998introduction}
 Sutton, R.~S. \bbland{} Barto, A.~G., {\em Introduction to reinforcement
