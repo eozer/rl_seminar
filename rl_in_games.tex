@@ -90,7 +90,7 @@ Until now we bring up usual common problems that every reinforcement learning sy
 To begin with, exploitation versus exploration dilemma is truly one of the classic challenges in the reinforcement learning. Problem comes along with the agent's main learning objective. That is, the agent must be able to obtain the maximum possible reward from the actions that it has performed before. Still, it must discover such new actions that would also lead to maximize the reward in future \cite{sutton1998introduction}. The dilemma is basically deciding on what is the perfect moment to explore and exploit, yet it has no single solution. Sutton and Barto \cite{sutton1998introduction} demonstrate ways to balance between exploration and exploitation, including $\varepsilon$\textit{-greedy} and \textit{softmax} which all are perform near-optimally reward. Even though there exists many possible techniques in the literature, upon closer examination $\varepsilon$\textit{-greedy} appears to be common approach, also in \cite{amato2010high, liao2012cs229}.
 
 
-On the other hand, RL suffers many problems from DL point of view which some are identified by Mnih et al. \cite{mnih2013playing}. First, data needs to be independent and identically distributed based on the assumptions of DL algorithms. In contrast to this, RL usually consists of sequences of highly correlated actions. Moreover, vast majority of DL algorithms requires extensive amount of labeled data to achieve "automatic" feature extraction, whereas RL algorithms' experience-based learning demand reward that is usually noisy and delayed. Also, agents in RL algorithms likely to change their behaviors as they explore, this indefinite data distribution violates the fixed distribution assumption of the DL algorithms. Fortunately, there exists different approaches to overcome these issues \cite{mnih2013playing}.
+On the other hand, RL suffers many problems from DL point of view which some are identified by Mnih et al. \cite{mnih2013playing}. First, data needs to be independent and identically distributed based on the assumptions of DL algorithms. In contrast to this, RL usually consists of sequences of highly correlated actions. Moreover, vast majority of DL algorithms requires extensive amount of labeled data to achieve "automatic" feature extraction, whereas RL algorithms' experience-based learning demands reward that is usually noisy and delayed. Also, agents in RL algorithms likely to change their behaviors as they explore, this indefinite data distribution violates the fixed distribution assumption of the DL algorithms. Fortunately, there exists deep learning approach to overcome these issues \cite{mnih2013playing}.
 
 \section{Review of existing systems}
 
@@ -118,18 +118,21 @@ So far we discussed two systems that have converged into decent results either b
 
 Initially, the total number of checkers, from only one side, are vectorized according to each position on the board. This representation is then given as input pattern to NN, which also has output patterns consisting of 4 possible outcomes for example a white win by gammon. At each time step, edge weights of NN is calculated by using TD($\lambda$) algorithm. By the end of game, again  the "outcomes" given as the final reward for weight calculation. 
 
-In the training phase, agent makes the move for both sides and scores possible legal moves, without any heuristics, at each step in NN. Then from NN maximum likely outcome is selected to make the next move. This learning methodology with no heuristics managed to reach at intermediate-level of play. Yet, after adding hand-crafted features and training for about 1.5 millions of self-played game, TD-Gammon achieved master level of play. But surprisingly, upon further analysis by Pollack and Blair \cite{pollack1997did} it is concluded that the main reason to achieve this level of play was not related with the TD and NN approach, but the self-playing scheme and the stochastic environment of the backgammon game. This finding led us to question the other systems that may have context specific misleading outcomes, which we will discuss later on.
+In the training phase, agent makes the move for both sides and scores possible legal moves, without any heuristics, at each step in NN. Then from NN maximum likely outcome is selected to make the next move. This learning methodology with no heuristics managed to reach at intermediate-level of play. Yet, after adding hand-crafted features and training for about 1.5 millions of self-played game, TD-Gammon achieved master level of play \cite{tesauro1995temporal}. But surprisingly, upon further analysis by Pollack and Blair \cite{pollack1997did} it is concluded that the main reason to achieve this level of play was not related with the TD and NN approach, but the self-playing scheme and the stochastic environment of the backgammon game. This finding led us to question the other systems that may have context specific performance regardless of the algorithm, which we will discuss later on.
+\\
 
 \textbf{\textit{Playing Atari with Deep Reinforcement Learning \cite{mnih2013playing}}}
 
+Heretofore, game specific information would needed to be encoded such that diverse RL algorithms could make progress towards learning. Mnih et al. \cite{mnih2013playing} introduce a context-free method called \textit{deep Q-Learning (DQN)}, that is a combination of CNN and RL by which the model takes information nothing but from the video input. Their approach overcome several challenges between RL and DL, as we discussed in the previous section.
 
+First of all sensory inputs taken from Atari games consist of high dimensional frames, therefore, preprocessing is crucial to reduce observation dimensionality. Then, a state is described as the sequence of observation and action pairs, because it is impossible to completely relate the situation from only one observation. However, this scheme can cause the training sample to dominate others, especially if the maximizing action is only particular one. For example, if the maximizing action that moves to right, then it dominates the other actions. For that reason, experience replay mechanism is used to smooth out the sample distributions. Moreover, Q-learning is used for the same rationale, meaning unlike the on-policy learning like SARSA, off-policy updates Q-values using the greedy action not current policy's action. Actions are executed based on $\varepsilon$-greedy policy, after that the reward and next frame is observed then stored in the replay memory. In order to alleviate the relating independence assumption in DL; that is, correlations of consecutive samples are randomized at each step in the replay memory. Finally, gradient descent is performed to calculate the local minimum of the network.
 
-
+The system played 7 Atari games using Arcade Learning Environment. According to results, DQN outperforms all RL algorithms, whereas at only 3 games the system exceeds human performance for the remaining games, the result is far from being close.
 
 \begin{table}[h]
 	\begin{center}
-		\hspace*{-2.25cm}
-		\includegraphics[width=1.25\textwidth]{img/comparison.png}
+		\hspace*{-1.25cm}
+		\includegraphics[width=1.1\textwidth]{img/comparison.png}
 		\caption{DRAFT! Comparisons of the systems }
 		\label{table:comparison}
 	\end{center}
@@ -141,9 +144,8 @@ In the training phase, agent makes the move for both sides and scores possible l
 \colorbox{red}{VERY FIRST DRAFT}
 
 \begin{itemize}
-    \item Evaluation frameworks
     \item Sandbox learning, can this be used to train DQN approach and applied on other games? This way one may not to deal with the context at all? RL in games, may help other. Studying real-time/complex video games is hard due to lack SDK. Mainly, algorithms implemented on these game because they were the only available one. The need for the general AI trainer play ground Sukhbaatar et al. \cite{sukhbaatar2015mazebase}. Find the example that makes use of this (cannot find the paper atm. Starcraft AI player trained outside of the context i.e. by this sandbox).
-    \item Talk about resolving the context specific results.
+    \item Getting around with the context specific information, if we can overcome this, it is likely to have \textbf{general purpose learner} that can be trained such that can achieve anything, because NN can achieve fixed accuracy under X iteration?
 \end{itemize}
 
 \subsection{Context specific outcomes(include this in future)}
