@@ -39,7 +39,7 @@ Advancement in a scientific field affect one to another and grants to improve ev
 In this paper, we will review four different existing reinforcement learning systems in the game context. The rest of this paper is organized as follows. In section 2, we discuss common challenges and approaches to the problems in RL in games such as dealing with abstraction of the environment or evaluation of the results. In section 3, we review existing systems in detail each with its unique characteristics. Then following section proposes possible improvements that can be taken to improve the research field. Last section summarizes and concludes the paper.
 
 \section{Challenges and  approaches}
-In the last decade, many research has gone into investigating reinforcement learning algorithms in the game context. Concurrently, many challenges and approaches have arisen around this topic repeatedly. In this section, we present some of those common challenges and some approaches that exist mostly in the reviewed systems \cite{tesauro1995temporal, amato2010high, liao2012cs229, mnih2013playing, silver2016mastering}.
+In the last decade, many research has gone into investigating reinforcement learning algorithms in the game context. Concurrently, many challenges and approaches have arisen around this topic repeatedly. In this section, we present some of those common challenges and some approaches that exist mostly in the reviewed systems \cite{tesauro1995temporal, amato2010high, liao2012cs229, mnih2013playing}.
 
 Because there exist many different and specific problems as well as methods to tackle them, the challenges and approaches listed in this section are all related but not necessarily belong to every system in the whole research field. Generally, given matters are all common, but still some of them may not appear within another context.
 
@@ -118,7 +118,7 @@ So far we discussed two systems that have converged into decent results either b
 
 Initially, the total number of checkers, from only one side, are vectorized according to each position on the board. This representation is then given as input pattern to NN, which also has output patterns consisting of 4 possible outcomes for example a white win by gammon. At each time step, edge weights of NN is calculated by using TD($\lambda$) algorithm. By the end of game, again  the "outcomes" given as the final reward for weight calculation. 
 
-In the training phase, agent makes the move for both sides and scores possible legal moves, without any heuristics, at each step in NN. Then from NN maximum likely outcome is selected to make the next move. This learning methodology with no heuristics managed to reach at intermediate-level of play. Yet, after adding hand-crafted features and training for about 1.5 millions of self-played game, TD-Gammon achieved master level of play \cite{tesauro1995temporal}. But surprisingly, upon further analysis by Pollack and Blair \cite{pollack1997did} it is concluded that the main reason to achieve this level of play was not related with the TD and NN approach, but the self-playing scheme and the stochastic environment of the backgammon game. This finding led us to question the other systems that may have context specific performance regardless of the algorithm, which we will discuss later on.
+In the training phase, agent makes the move for both sides and scores possible legal moves, without any heuristics, at each step in NN. Then from NN maximum likely outcome is selected to make the next move. This learning methodology with no heuristics managed to reach at intermediate-level of play. Yet, after adding hand-crafted features and training for about 1.5 millions of self-played game, TD-Gammon achieved master level of play \cite{tesauro1995temporal}.
 \\
 
 \textbf{\textit{Playing Atari with Deep Reinforcement Learning \cite{mnih2013playing}}}
@@ -138,32 +138,40 @@ The system played 7 Atari games using Arcade Learning Environment. According to 
 	\end{center}
 \end{table}
 
+Explain the table and express your findings about the reviews. For example context specific outcome
 
-\section{Future research}
-
-\colorbox{red}{VERY FIRST DRAFT}
-
-\begin{itemize}
-    \item Sandbox learning, can this be used to train DQN approach and applied on other games? This way one may not to deal with the context at all? RL in games, may help other. Studying real-time/complex video games is hard due to lack SDK. Mainly, algorithms implemented on these game because they were the only available one. The need for the general AI trainer play ground Sukhbaatar et al. \cite{sukhbaatar2015mazebase}. Find the example that makes use of this (cannot find the paper atm. Starcraft AI player trained outside of the context i.e. by this sandbox).
-    \item Getting around with the context specific information, if we can overcome this, it is likely to have \textbf{general purpose learner} that can be trained such that can achieve anything, because NN can achieve fixed accuracy under X iteration?
-\end{itemize}
-
-\subsection{Context specific outcomes(include this in future)}
-\colorbox{red}{HIGHLY INCOMPLETE DRAFT}
-
-Mastering the game of Go with deep neural networks and tree search \colorbox{red}{Find papers}
-
-Even though a new algorithmic concept provides certain solution, for a certain context it may not necessarily give comprehensive solution for every other systems and possibly may lead to wrong direction.
-
-Found some articles discusses the solution of TD-Gammon did not work out well for other games. Results of
-some games in \cite{mnih2013playing} also proves that. Which brings the question AlphaGo is surely a success, but does that mean it is success for not something big? Only for that particular solution? We will see that.
-
-"Playing atari paper" points out the TD-Gammon problem due to its stochastic dice rolls, using the same argument, it can also be inferred that AlphaGo's technique is also target specific, i.e. not-general approach.
-
-We believe and hope that context-free and  model-free approaches that are developed in the RL area would help the scientific area as a whole, to improve more and more. Not only to just develop some applications but improve the AI into more advance level that could come-up and tackle down anything that it is opposed to, just like as General Problem Solver (check out the Soar (cognitive architecture)). Perhaps this notion will help to improve in return from others as we argue at first.
+ But surprisingly, upon further analysis by Pollack and Blair \cite{pollack1997did} it is concluded that the main reason to achieve this level of play was not related with the TD and NN approach, but the self-playing scheme and the stochastic environment of the backgammon game. This finding led us to question the other systems that may have context specific performance regardless of the algorithm, which we will discuss later on.
+\newpage
+%\section{Future research}
+%
+%\colorbox{red}{VERY FIRST DRAFT}
+%
+%\begin{itemize}
+%    \item Sandbox learning, can this be used to train DQN approach and applied on other games? This way one may not to deal with the context at all? RL in games, may help other. Studying real-time/complex video games is hard due to lack SDK. Mainly, algorithms implemented on these game because they were the only available one. The need for the general AI trainer play ground Sukhbaatar et al. \cite{sukhbaatar2015mazebase}. Find the example that makes use of this (cannot find the paper atm. Starcraft AI player trained outside of the context i.e. by this sandbox).
+%    \item Getting around with the context specific information, if we can overcome this, it is likely to have \textbf{general purpose learner} that can be trained such that can achieve anything, because NN can achieve fixed accuracy under X iteration?
+%\end{itemize}
+%
+%\subsection{Context specific outcomes(include this in future)}
+%\colorbox{red}{HIGHLY INCOMPLETE DRAFT}
+%
+%Mastering the game of Go with deep neural networks and tree search \colorbox{red}{Find papers}
+%
+%Even though a new algorithmic concept provides certain solution, for a certain context it may not necessarily give comprehensive solution for every other systems and possibly may lead to wrong direction.
+%
+%Found some articles discusses the solution of TD-Gammon did not work out well for other games. Results of
+%some games in \cite{mnih2013playing} also proves that. Which brings the question AlphaGo is surely a success, but does that mean it is success for not something big? Only for that particular solution? We will see that.
+%
+%"Playing atari paper" points out the TD-Gammon problem due to its stochastic dice rolls, using the same argument, it can also be inferred that AlphaGo's technique is also target specific, i.e. not-general approach.
+%
+%We believe and hope that context-free and  model-free approaches that are developed in the RL area would help the scientific area as a whole, to improve more and more. Not only to just develop some applications but improve the AI into more advance level that could come-up and tackle down anything that it is opposed to, just like as General Problem Solver (check out the Soar (cognitive architecture)). Perhaps this notion will help to improve in return from others as we argue at first.
 
 \section{Conclusion}
-Recap everything
+Recap everything, summary + potential future work at the end
+
+Deep Learning achieved next level of unsupervised learning, can we teach anything by just showing. 
+
+% https://en.wikipedia.org/wiki/Artificial_general_intelligence
+Ian Goodfellow, Senior Research Scientist at Google: I expect within five years, we will have neural networks that can summarize what happens in a video clip, and will be able to generate short videos. Neural networks are already the standard solution to vision tasks. I expect they will become the standard solution to NLP and robotics tasks as well. I also predict that neural networks will become an important tool in other scientific disciplines. For example, neural networks could be trained to model the behavior of genes, drugs, and proteins and then used to design new medicines.
 
 \newpage
 \nocite{*}

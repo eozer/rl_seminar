@@ -14,12 +14,6 @@ Amato, C. \bbland{} Shani, G., High-level reinforcement learning in strategy
   Agents and Multiagent Systems: volume 1-Volume 1}. International Foundation
   for Autonomous Agents and Multiagent Systems, 2010, \bblpages{} 75--82.
 
-\bibitem[BNV13]{bellemare13arcade}
-{Bellemare}, M.~G., {Naddaf}, Y., {Veness}, J. \bbland{} {Bowling}, M., The
-  arcade learning environment: An evaluation platform for general agents.
-\newblock {\em Journal of Artificial Intelligence Research}, 47, \bblpages{}
-  253--279.
-
 \bibitem[KaT12]{karakovskiy2012mario}
 Karakovskiy, S. \bbland{} Togelius, J., The mario ai benchmark and
   competitions.
@@ -37,7 +31,7 @@ Mnih, V., Kavukcuoglu, K., Silver, D., Graves, A., Antonoglou, I., Wierstra, D.
   \bbland{} Riedmiller, M., Playing atari with deep reinforcement learning.
 \newblock {\em arXiv preprint arXiv:1312.5602}.
 
-\bibitem[PolB97]{pollack1997did}
+\bibitem[PoB97]{pollack1997did}
 Pollack, J.~B. \bbland{} Blair, A.~D., Why did td-gammon work?
 \newblock  {\em Advances in Neural Information Processing Systems}. MORGAN
   KAUFMANN PUBLISHERS, 1997, \bblpages{} 10--16.
