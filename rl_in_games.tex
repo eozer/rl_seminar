@@ -131,26 +131,33 @@ First of all sensory inputs taken from Atari games consist of high dimensional f
 The demonstrated method by authors manages to play 7 Atari games using Arcade Learning Environment with no game specific information other than raw images. After 50 hours of training (one training epoch takes 30 minutes of training time), their approach (DQN) outperforms all best performing methods from the literature including a neuro-evolution policy search approach. Whereas, DQN manages to surpass human performance only in 3 games. Remaining game results are far away from being close to expert human player. Even though these are only preliminary results, it is an important step towards general artificial intelligence.
 
 \paragraph{Comparative Analysis.}
-In the literature, there is no clear-cut definition to categorize reinforcement learning applications in the gaming domain under any framework. So, we categorize the systems based on the abstraction approaches, as we have already defined in the earlier sections (Section 2.2). Table \ref{table:comparison} demonstrates a comparison matrix among four reviewed reinforcement learning articles based on the criteria.
+In the literature, there is no clear-cut definition to categorize reinforcement learning applications in the gaming domain. Because of the input of a system highly related with the characteristics of the algorithm, we categorize the systems based on the abstraction approaches they reflect -- those are low-level, high-level, and context-free approaches. We have briefly introduced the idea in the earlier sections (Section 2.2).
 
-Firstly, previous articles \cite{tesauro1995temporal, liao2012cs229} utilize low-level abstraction in two different game genres board game and platformer game. Usually, board games need game specific information such as position or number of the piece.
-\newpage
+To begin with, reinforcement learning systems having a low-level abstraction of the game environment demands game specific information. As a result, the AI framework (playground) plays a crucial role here to extract the required data. We examined two \cite{tesauro1995temporal, liao2012cs229} articles possess the low-level abstraction in two different game genres; however, the game environment does not necessarily exhibit any difficulties regarding the implementation of the algorithms. Moreover, algorithms can be range from classical reinforcement learning algorithms (Q-learning) to more advanced ones (Neural networks) and can achieve even grandmaster level of play. 
+
+On the other hand, high-level abstraction heavily relies on the built-in AI of the game to switch between strategies. Thus, more robust AI framework is must, not only to extract the information but also to let it handle the low-level actions. In addition, the system needs a finite-state machine consisting of high-level decisions. For example, the leader traits in the reviewed article by Amato and Shani \cite{amato2010high} used to determine the high-level strategy. However, high-level abstraction can be still applied to any games under sufficient mapping of a set of actions to groups of high-level strategies.
+
+Finally, context-free abstraction approach presented by Mnih et al. \cite{mnih2013playing} requires nothing but raw images, the set of actions, and the score of the game. Even though the article demonstrates only in simple Atari games, the successor approach by Silver et al. \cite{silver2016mastering} presented that it can be applied to even complex games. Unlike the previous ones, it is harder to implement, takes longer iterations to converge (huge search space), and the intermediate results are not obvious to interpret because of the convolutional neural network.
+
+Table \ref{table:comparison} illustrates a comparison matrix among four reviewed reinforcement learning articles based on the criteria. 
+In the table, the evaluation criteria of each system divided into three main groups, environment, methodology, and evaluation. Each column shows the properties of the reviewed articles. If a system presents criteria we simply indicate the feature, or we express with yes/no.
+
  \begin{table}[h]
  	\begin{center}
  		\hspace*{-1.25cm}
  		\includegraphics[width=1.1\textwidth]{img/comparison.png}
- 		\caption{The comparison matrix presents the differences among four reviewed reinforcement learning articles in the gaming context based on the evaluation criteria.}
+ 		\caption{The comparison matrix presents the differences among four reviewed reinforcement learning articles in the gaming context based on the criteria.}
  		\label{table:comparison}
  	\end{center}
  \end{table}
 
 
 \section{Conclusion}
-Start with cliche.
+Reinforcement learning has received recent attention in the last couple of years due to the breakthrough success in the gaming context. Games play the role of the robust playground for the research by providing several advantages. Providing a controlled environment and contributing to the future studies as a test-bed software, perhaps the most important ones. However, we have presented several challenges in this context as well -- implementation perspective, abstraction approaches, evaluation methods, and further difficulties in terms of algorithms. In this paper, we reviewed four different reinforcement learning systems in the gaming context.
 
-Express what we did in this paper.
+In summary, 
 
-Go all over again the reviewed articles, in a brief summary. Give your opinions about those papers.
+Possible future work could be
 
 Sandbox learning. Context-free -> no specific information, model-free no need for transitional probabilities algorithm will discover itself, application-free no need to train the agent in the target application -> train the agent like a real human being -> another big step towards general artificial intelligence.
 
